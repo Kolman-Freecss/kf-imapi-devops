@@ -5,6 +5,13 @@
 - IMAPI Authentication Gateway Service: https://github.com/Kolman-Freecss/kf-imapi-auth-gateway
 - IMAPI DevOps / Kafka Event Handling: https://github.com/Kolman-Freecss/kf-imapi-devops
 
+## TroubleShooting
+
+- Connection through different endpoints like (Host-Docker) (Host-Host) (Docker-Docker)
+  - Check in Confluence: https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/
+- Kafka Broker need more memory
+  - KAFKA_MESSAGE_MAX_BYTES, KAFKA_REPLICA_FETCH_MAX_BYTES, KAFKA_REPLICA_FETCH_RESPONSE_MAX_BYTES
+
 ---
 
 Shield: [![CC-BY-NC-ND 4.0][CC-BY-NC-ND-shield]][CC-BY-NC-ND]
