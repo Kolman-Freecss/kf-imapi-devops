@@ -5,6 +5,37 @@
 - IMAPI Authentication Gateway Service: https://github.com/Kolman-Freecss/kf-imapi-auth-gateway
 - IMAPI DevOps / Kafka Event Handling: https://github.com/Kolman-Freecss/kf-imapi-devops
 
+## Getting started
+
+### AWS Configuration
+
+- Configure the AWS CLI with the credentials of the AWS account.
+```bash
+aws configure
+```
+
+- Execute Terraform code in `.terraform` to deploy the infrastructure in AWS cloud.
+```bash
+terraform init
+terraform apply
+```
+
+### AWS EKS Method
+
+Not implemented because of AWS pricing. But a skeleton is available in the `death-eks-expense-method` folder.
+
+- Configure Kubectl to connect to the AWS EKS Kubernetes cluster.
+```bash
+aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
+# Test the connection
+kubectl get nodes
+```
+
+- Deploy Kafka in AWS EKS Kubernetes cluster.
+```bash
+kubectl apply -f kafka-deployment.yaml
+```
+
 ## TroubleShooting
 
 - Connection through different endpoints like (Host-Docker) (Host-Host) (Docker-Docker)
