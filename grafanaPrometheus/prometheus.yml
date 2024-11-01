@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 3s # Interval to scrape metrics
+
+scrape_configs:
+  - job_name: 'Job-Incident-Service'
+    metrics_path: '/actuator/prometheus' # Metric path of your microservice
+    static_configs:
+      - targets: ['host.docker.internal:8082'] # Microservice host and port
+        labels: 
+          app: 'Incident-Service' # Microservice name
+

@@ -5,7 +5,32 @@
 - IMAPI Authentication Gateway Service: https://github.com/Kolman-Freecss/kf-imapi-auth-gateway
 - IMAPI DevOps / Kafka Event Handling: https://github.com/Kolman-Freecss/kf-imapi-devops
 
+## Endpoints Utils
+
+- Prometheus targets: http://localhost:9090/targets?search=
+
 ## Getting started
+
+### Grafana & Prometheus Configuration
+
+- Start Grafana and Prometheus services.
+```bash
+docker-compose up -d
+```
+- Access Grafana at http://localhost:3000 and login with the default credentials (admin:admin).
+- Add Prometheus as a data source in Grafana.
+  - URL: http://prometheus:9090
+  - Access: Server (default)
+  - Save & Test
+- Create a new dashboard in Grafana.
+  - Add a new panel.
+  - Select Prometheus as the data source.
+  - Write a query to fetch the data from Prometheus.
+  - Save the panel.
+  - Save the dashboard.
+- (TODO) Import the Grafana dashboard from `grafana-dashboard.json`.
+- (TODO) Access the dashboard at http://localhost:3000/d/IMAPI-DevOps/imapi-devops
+
 
 ### AWS Configuration
 
@@ -42,6 +67,7 @@ kubectl apply -f kafka-deployment.yaml
   - Check in Confluence: https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/
 - Kafka Broker need more memory
   - KAFKA_MESSAGE_MAX_BYTES, KAFKA_REPLICA_FETCH_MAX_BYTES, KAFKA_REPLICA_FETCH_RESPONSE_MAX_BYTES
+- Take care about the common problem: host.docker.internal | localhost
 
 ---
 
