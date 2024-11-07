@@ -49,6 +49,12 @@ terraform apply
 
 Not implemented because of AWS pricing. But a skeleton is available in the `death-eks-expense-method` folder.
 
+- Generate AWS Key-Pair SSH key to access the EC2 instances.
+```bash
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/angular-ec2-key
+# If this doesn't work, try the command with absolute path
+```
+
 - Configure Kubectl to connect to the AWS EKS Kubernetes cluster.
 ```bash
 aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster

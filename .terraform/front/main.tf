@@ -1,27 +1,24 @@
+resource "aws_key_pair" "angular_key" {
+  key_name   = var.key_name
+  public_key = file("~/.ssh/angular-ec2-key.pub")
+}
+
 resource "aws_instance" "angular_server" {
-  ami           = "var.ami_id"
-  instance_type = "var.instance_type"
-  key_name      = "var.key_name"
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = aws_key_pair.angular_key.key_name
 
   tags = {
     Name = "angular-ec2-server"
   }
 
   user_data = <<-EOF
-              #!/bin/bash
-              # Update NodeJs and Npm
-              curl -sL https://rpm.nodesource.com/setup_18.x | bash -
-              yum install -y nodejs
+            #!/bin/bash
+            yum install -y docker
+            systemctl start docker
+            systemctl enable docker
+            EOF
 
-              # Install Angular CLI
-              npm install -g @angular/cli
-
-              # Configure Firewall for HTTP
-              yum install -y firewalld
-              systemctl start firewalld
-              firewall-cmd --permanent --add-service=http
-              firewall-cmd --reload
-              EOF
 }
 
 resource "aws_security_group" "angular_sg" {
