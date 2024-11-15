@@ -32,3 +32,10 @@ build/
 ### VS Code ###
 .vscode/
 .keycloack/data
+
+### Terraform ###
+*.tfstate
+*.tfstate.*
+*.tfvars
+**/.terraform/providers/**
+*.terraform.lock.hcl
